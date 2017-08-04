@@ -3,9 +3,9 @@ Example:
 import asyncio
 import logging
 
-from broker.redis import RedisMessageBroker
-from event import Event
-from router import EventRouter
+from tiny_eda.broker.redis import RedisMessageBroker
+from tiny_eda.event import Event
+from tiny_eda.router import EventRouter
 
 
 async def ping_generator():
