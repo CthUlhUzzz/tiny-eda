@@ -3,11 +3,11 @@ import inspect
 import json
 import logging
 
-from tiny_eda.event import Event
+from .event import Event
 
 
 class EventRouter:
-    def __init__(self, message_broker, channel_prefix='event_'):
+    def __init__(self, message_broker, channel_prefix='Event:'):
         self.message_broker = message_broker
         self._generators_results = None
         self.stopped = asyncio.Event()

@@ -1,4 +1,3 @@
-from .redis import RedisMessageBroker
 from abc import ABCMeta, abstractmethod
 
 
@@ -35,5 +34,8 @@ class AbstractMessageBroker(metaclass=ABCMeta):
     async def stop(self):
         raise NotImplementedError
 
+from .redis import RedisMessageBroker
+
+brokers_map = {'Redis': RedisMessageBroker}
 
 __all__ = ['RedisMessageBroker', 'AbstractMessageBroker']

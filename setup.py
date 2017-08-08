@@ -9,7 +9,7 @@ setup(
     license='LGPL v3',
     keywords='framework eda microservice',
     packages=['tiny_eda',
-              'tiny_eda.broker'],
+              'tiny_eda.brokers'],
     install_requires=['aioredis'],
     classifiers=[
         'Intended Audience :: Developers',

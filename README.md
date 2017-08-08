@@ -1,31 +1,11 @@
-Example:
-```python
-import asyncio
-import logging
+**Library provide interface for Event driven programming on top of given message broker.
+With it, you can implement interaction between any components of your system.**
 
-from tiny_eda.broker.redis import RedisMessageBroker
-from tiny_eda.event import Event
-from tiny_eda.router import EventRouter
+Library works with the following abstractions:
+* **Message brokers** - Broker for the transfer of events (You can also create your own brokers, by inheriting them from the `AbstractMessageBroker` class).
+* **Event router** - The main engine of the library responsible for routing `events` between `event generators`, `event handlers` and `message brokers`.
+* **Event generator** - Generator of `events` (Must be an asynchronous generator)
+* **Event handler** - The `event` handler with the specified types (Must be an asynchronous function)
+* **Event** - Event with `type` and `data` fields.
 
-
-async def ping_generator():
-    yield Event('ping', ['ping'])
-
-
-async def ping_handler(event):
-    return Event('pong', ['pong'])
-
-
-async def main():
-    async with EventRouter(RedisMessageBroker('127.0.0.1', 6379)) as router:
-        await router.enable_handler('ping', ping_handler)
-        router.enable_generator(ping_generator())
-        await router.stopped.wait()
-
-
-if __name__ == '__main__':
-    logging.basicConfig(level=logging.DEBUG)
-    loop = asyncio.get_event_loop()
-    loop.create_task(main())
-    loop.run_forever()
-```
+**Note:** Due to the requirement for asynchronous generators, it only works with *Python 3.6* and above.

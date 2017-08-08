@@ -1,4 +1,4 @@
-from .broker import *
+from .brokers import *
 from .event import Event
 from .router import EventRouter
 

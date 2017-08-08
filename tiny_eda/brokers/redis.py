@@ -2,16 +2,15 @@ from logging import getLogger
 
 from aioredis import create_connection
 from aioredis.pubsub import Receiver
-from tiny_eda.broker import AbstractMessageBroker
 
-from . import MessageBrokerConnectionClosed, MessageBrokerNothingToRead
+from . import AbstractMessageBroker, MessageBrokerConnectionClosed, MessageBrokerNothingToRead
 
 
 # FIXME: Create reconnection
 # TODO: Reuse connections for separated Brokers
 
 class RedisMessageBroker(AbstractMessageBroker):
-    def __init__(self, host, port, password=None):
+    def __init__(self, host, port, login=None, password=None):
         self.host = host
         self.port = port
         self.password = None or password

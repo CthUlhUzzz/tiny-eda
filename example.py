@@ -1,7 +1,7 @@
 import asyncio
 import logging
 
-from tiny_eda.broker import RedisMessageBroker
+from tiny_eda.brokers import RedisMessageBroker
 from tiny_eda.event import Event
 from tiny_eda.router import EventRouter
 
